@@ -26,7 +26,6 @@ exports.onlySameUserOrAdminCanDoThisAction = (req, res, next) => {
             return res.status(403).send();
         }
     }
-
 };
 
 exports.sameUserCantDoThisAction = (req, res, next) => {

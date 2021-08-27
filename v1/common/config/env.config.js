@@ -9,5 +9,16 @@ module.exports = {
         "NORMAL_USER": 1,
         "PAID_USER": 4,
         "ADMIN": 2048
+    },
+    "mongoDBSettings":{
+        "options":{
+            "autoIndex": false, 
+            "poolSize": 10,         
+            "bufferMaxEntries": 0,
+            "useNewUrlParser": true,
+            "useUnifiedTopology": true
+        },
+        "db_conx":"mongodb://localhost:27017/rest-tutorial",
+        "timeout":5000
     }
 };

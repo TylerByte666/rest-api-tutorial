@@ -1,7 +1,15 @@
 const jwt = require('jsonwebtoken'),
-    secret = require('../config/env.config.js').jwt_secret,
-    crypto = require('crypto');
+secret = require('../config/env.config.js').jwt_secret,
+crypto = require('crypto');
 
+
+exports.validCreateUserBodyFields = (req, res, next)=>{
+    if (req.body && req.body.firstName && req.body.lastName && req.body.email &&req.body.password) {
+        return next();
+    } else {
+        return res.status(400).send({error: 'not all fields present'});
+    }
+};
 exports.verifyRefreshBodyField = (req, res, next) => {
     if (req.body && req.body.refresh_token) {
         return next();
@@ -21,7 +29,6 @@ exports.validRefreshNeeded = (req, res, next) => {
         return res.status(400).send({error: 'Invalid refresh token'});
     }
 };
-
 
 exports.validJWTNeeded = (req, res, next) => {
     if (req.headers['authorization']) {
